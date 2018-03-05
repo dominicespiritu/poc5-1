@@ -1,0 +1,21 @@
+<button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
+<!-- {{serverCreationStatus}} -->
+<p [ngStyle]="{backgroundColor: getColor()}" *ngIf="serverCreationStatus; else noServer">Server was created {{serverName}}</p>
+<ng-template #noServer>
+  <p [ngStyle]="{backgroundColor: getColor()}">N/A</p>
+  
+</ng-template>
+<p [ngClass]="{online: serverStatus === 'online'}">N/A</p>
+Not Binded
+<input type="text" class="form-control" (input)="onUpdateServerName($event)" />
+Binded
+<input type="text" class="form-control" [(ngModel)]="serverName" />
+<p [innerText]="allowNewServer"></p>
+<p [innerText]="obj | json"></p>
+<p>
+  servers works!
+</p>
+<!-- <app-server *ngFor="let server of servers"></app-server> -->
+<!-- <app-server *ngFor="let server of servers">server</app-server> -->
+<div *ngFor="let server of servers; let i = index">{{server}} -- {{i}}</div>
+
